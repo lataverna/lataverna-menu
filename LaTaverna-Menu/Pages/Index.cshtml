@@ -1,0 +1,15 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+
+}
+
+<div class="container mt-5" style="background-color:#faf0b3;">
+    <div class="row" >
+        @if(Model.Sections.Any())
+        {
+            @await Html.PartialAsync("Cards/MainCard", Model.Sections.ToList())
+        }
+    </div>
+</div>

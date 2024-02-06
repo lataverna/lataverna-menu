@@ -1,0 +1,11 @@
+C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net7.0\Core.LaTavernaMenu.deps.json
+C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net7.0\Core.LaTavernaMenu.dll
+C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net7.0\Core.LaTavernaMenu.pdb
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.GeneratedMSBuildEditorConfig.editorconfig
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.AssemblyInfoInputs.cache
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.AssemblyInfo.cs
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.csproj.CoreCompileInputs.cache
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.dll
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\refint\Core.LaTavernaMenu.dll
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\Core.LaTavernaMenu.pdb
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net7.0\ref\Core.LaTavernaMenu.dll

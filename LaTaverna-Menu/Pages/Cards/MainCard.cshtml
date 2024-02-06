@@ -1,0 +1,40 @@
+﻿@using Core.LaTavernaMenu.Models;
+@model List<Section>
+
+@foreach (var obj in Model)
+{
+    <div class="col-md-12 m-1">
+        <div class="card bg-transparent border-bottom-1" style="border-color:black">
+            <div class="card-body">
+                <h2 class="card-title justify-content-center">@obj.NameId</h2>
+                <div class="d-flex justify-content-end">
+                    <div class="p-1"><i class="bi bi-pencil"></i></div>
+                    <div class="p-1"><i class="bi bi-trash"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restanti sezioni -->
+    <div class="col-md-9">
+        <!-- Inizia una riga per ogni sezione -->
+        <div class="row">
+
+            @foreach (var dish in obj.Dishes)
+            {
+                <div class="col-md-12 m-2 mt-2 border-2" style="border-color:black;" id="@dish.Id.ToString()">
+                    <div class="card mb-3 position-relative bg-transparent border-1" style="border-color:black">
+                        <div class="card-body">
+                            <h5 class="card-title">@dish.Name</h5>
+                            <p class="card-text">@dish.Description</p>
+                            <div class="border-0 price position-absolute bottom-0 end-0 justify-content-center align-items-center" style="width: 100px; height: 50px; border: 1px solid #ccc;">
+                                <span class="align-text-center h3">€12.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+
