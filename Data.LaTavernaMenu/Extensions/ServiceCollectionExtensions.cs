@@ -16,8 +16,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             string sqlConnectionString = configuration.GetConnectionString("LaTavernaMenu") ?? string.Empty;
 
-            services.AddDbContext<AppDBContext>(options => options.UseSqlServer(sqlConnectionString, 
-                options => options.EnableRetryOnFailure(5, TimeSpan.FromSeconds(3), null)));
+            services.AddDbContext<AppDBContext>(options =>
+                   options.UseSqlServer(sqlConnectionString));
 
             services.AddScoped<ISectionRepository, SectionRepositoryImpl>();
 
@@ -32,5 +32,5 @@ namespace Microsoft.Extensions.DependencyInjection
 
             return services;
         }
-    }
+    }  
 }

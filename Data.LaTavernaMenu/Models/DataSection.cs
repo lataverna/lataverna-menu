@@ -14,6 +14,7 @@ namespace Data.LaTavernaMenu.Models
 
         public string Name { get; set; }
 
-        public HashSet<DataDish> Dishes { get; set;}
+        public HashSet<DataDish> Dishes { get; set; }
+
     }
 }
