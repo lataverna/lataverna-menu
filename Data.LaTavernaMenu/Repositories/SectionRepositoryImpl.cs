@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.LaTavernaMenu.Models;
 using Data.LaTavernaMenu.DTOs;
 using Data.LaTavernaMenu.Interfaces.Repositories;
 using Data.LaTavernaMenu.Models;
@@ -22,21 +23,40 @@ namespace Data.LaTavernaMenu.Repositories
             this.mapper = mapper;
         }
 
-        public async void AddDishToSectionBySectionId(Guid sectionId, SectionDto dish)
+        public async Task AddDishToSectionBySectionId(string sectionName, SectionDto dish)
         {
 
             DataSection section;
-            section = await dbContext.Sections.FirstAsync(x => x.Id == sectionId);
-            if (section != null)
+            section = dbContext.Sections.First(x => x.Name == sectionName);
+            if (section != null && section.Dishes != null)
             {
-                section.Dishes.Add(new DataDish()
+                var newDish = new DataDish()
                 {
+                    Id = Guid.NewGuid(),
                     Description = dish.Description,
                     Name = dish.Name,
                     Price = dish.Price,
-                });
+                    SectionId = section.Id,
+                };
+                dbContext.Dishes.Add(newDish);
+                dbContext.SaveChanges();
+            }
+            else if (section != null)
+            {
+                section.Dishes = new HashSet<DataDish>();
 
-                dbContext.Sections.Update(section);
+                var newDish = new DataDish()
+                {
+                    Id = Guid.NewGuid(),
+                    Description = dish.Description,
+                    Name = dish.Name,
+                    Price = dish.Price,
+
+                    SectionId = section.Id,
+                };
+                dbContext.Dishes.Add(newDish);
+                dbContext.SaveChanges();
+
             }
         }
 
@@ -44,7 +64,6 @@ namespace Data.LaTavernaMenu.Repositories
         {
             DataSection section = new DataSection()
             {
-                Id = Guid.NewGuid(),
                 Name = title,
                 Dishes = new HashSet<DataDish>()
             };
@@ -60,27 +79,29 @@ namespace Data.LaTavernaMenu.Repositories
             if (section != null)
             {
                 dbContext.Sections.Remove(section);
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
             }
 
         }
 
-        public async Task<DataSection> GetSectionById(Guid id)
+        public async Task<Section> GetSectionById(Guid id)
         {
             var section = await dbContext.Sections.FindAsync(id);
             if (section != null)
             {
-                return section;
+                var obj = mapper.Map<Section>(section)!;
+                return obj;
             }
 
             return null;
 
         }
 
-        public async Task<List<DataSection>> GetSections()
+        public async Task<List<Section>> GetSections()
         {
-            var datas = await dbContext.Sections.ToListAsync();
-            return datas;
+            var datas = dbContext.Sections.Include(x => x.Dishes).ToList();
+            var mappedData = mapper.Map<List<Section>>(datas);
+            return mappedData;
         }
 
         public async void UpdateSectionById(Guid id, SectionDto sectionDto)
