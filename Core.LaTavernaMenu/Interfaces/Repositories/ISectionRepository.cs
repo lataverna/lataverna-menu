@@ -1,13 +1,12 @@
-﻿using Core.LaTavernaMenu.Models;
-using Data.LaTavernaMenu.DTOs;
-using Data.LaTavernaMenu.Models;
+﻿using Core.LaTavernaMenu.DTOs;
+using Core.LaTavernaMenu.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data.LaTavernaMenu.Interfaces.Repositories
+namespace Core.LaTavernaMenu.Interfaces.Repositories
 {
     public interface ISectionRepository
     {

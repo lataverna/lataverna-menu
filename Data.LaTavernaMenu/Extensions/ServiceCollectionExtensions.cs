@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
+using Core.LaTavernaMenu.Interfaces.Repositories;
 using Data.LaTavernaMenu;
-using Data.LaTavernaMenu.Interfaces.Repositories;
 using Data.LaTavernaMenu.Mappings;
 using Data.LaTavernaMenu.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +20,7 @@ namespace Microsoft.Extensions.DependencyInjection
                    options.UseSqlServer(sqlConnectionString));
 
             services.AddScoped<ISectionRepository, SectionRepositoryImpl>();
+            services.AddScoped<IDishRepository, DishRepositoryImpl>();
 
             var mapperConfig = new MapperConfiguration(mc =>
             {

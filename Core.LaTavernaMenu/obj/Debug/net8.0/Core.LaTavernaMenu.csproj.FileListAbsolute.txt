@@ -1,4 +1,5 @@
 C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net8.0\Core.LaTavernaMenu.deps.json
+C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net8.0\Core.LaTavernaMenu.runtimeconfig.json
 C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net8.0\Core.LaTavernaMenu.dll
 C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net8.0\Core.LaTavernaMenu.pdb
 C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\Core.LaTavernaMenu.GeneratedMSBuildEditorConfig.editorconfig
@@ -9,6 +10,5 @@ C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\Core.LaTavernaMenu.sou
 C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\Core.LaTavernaMenu.dll
 C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\refint\Core.LaTavernaMenu.dll
 C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\Core.LaTavernaMenu.pdb
-C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\ref\Core.LaTavernaMenu.dll
-C:\git\lataverna-menu\Core.LaTavernaMenu\bin\Debug\net8.0\Core.LaTavernaMenu.runtimeconfig.json
 C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\Core.LaTavernaMenu.genruntimeconfig.cache
+C:\git\lataverna-menu\Core.LaTavernaMenu\obj\Debug\net8.0\ref\Core.LaTavernaMenu.dll

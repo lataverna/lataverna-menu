@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Core.LaTavernaMenu.DTOs;
+using Core.LaTavernaMenu.Interfaces.Repositories;
 using Core.LaTavernaMenu.Models;
-using Data.LaTavernaMenu.DTOs;
-using Data.LaTavernaMenu.Interfaces.Repositories;
 using Data.LaTavernaMenu.Models;
 using Microsoft.EntityFrameworkCore;
 using System;

@@ -1,18 +1,27 @@
-﻿using Core.LaTavernaMenu.Models;
-using Data.LaTavernaMenu.Interfaces.Repositories;
+﻿using AutoMapper;
+using Core.LaTavernaMenu.DTOs;
+using Core.LaTavernaMenu.Interfaces.Repositories;
+using Core.LaTavernaMenu.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks.Dataflow;
+using System.Xml.Serialization;
 
 namespace LaTaverna_Menu.Controllers
 {
+    [Route("[controller]")]
     public class HomeController : Controller
     {
 
-        private readonly ISectionRepository repository;
+        private readonly ISectionRepository sectionRepository;
+        private readonly IDishRepository dishRepository;
+        private readonly IMapper mapper;
 
-        public HomeController(ISectionRepository repository)
+        public HomeController(ISectionRepository sectionRepository, IDishRepository dishRepository, IMapper mapper)
         {
-            this.repository = repository;
+            this.sectionRepository = sectionRepository;
+            this.dishRepository = dishRepository;
+            this.mapper = mapper;
         }
 
 
@@ -49,22 +58,21 @@ namespace LaTaverna_Menu.Controllers
             }
         }
 
-        // GET: HomeController/Edit/5
-        [Route("Update/Dish")]
-        public ActionResult UpdateDish(string nomePiatto, string descrizione, string prezzo)
+        [HttpPost]
+        [Route("/Update/Dish")]
+        public async Task<OkResult> UpdateDish([FromBody] UpdatedDishDto dish)
         {
-            return View();
+            Guid guid = Guid.Parse(dish.Id);
+            var datas = await dishRepository.UpdateDishAsync(guid, dish.DishName, dish.Description, dish.Price);
+            return Ok();
         }
 
-        [Route("Update/GoBack")]
-        public async Task UpdateGoBack([FromQuery] Guid id)
+        [HttpGet]
+        [Route("/Update/GoBack")]
+        public async Task<Dish> UpdateGoBack([FromQuery] Guid id)
         {
-            Section obj = await repository.GetSectionById(id);
-            var result = new
-            {
-                id = id,
-                dishName
-            };
+            Dish dish = await dishRepository.GetDishByIdAsync(id);
+            return dish;
         }
 
         // POST: HomeController/Edit/5
