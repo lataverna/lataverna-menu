@@ -18,6 +18,10 @@ namespace Data.LaTavernaMenu.Models
 
         public string Price { get; set; }
 
+        public bool IsNew { get; set; }
+
+        public bool IsAPorzione { get; set; } // indica se è all'etto o a porzione
+
         public Guid SectionId { get; set; }
 
         public DataSection Section { get; set; }

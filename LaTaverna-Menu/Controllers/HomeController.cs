@@ -31,21 +31,9 @@ namespace LaTaverna_Menu.Controllers
             return View();
         }
 
-        // GET: HomeController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: HomeController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
         // POST: HomeController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
         {
             try
@@ -59,56 +47,42 @@ namespace LaTaverna_Menu.Controllers
         }
 
         [HttpPost]
-        [Route("/Update/Dish")]
+        [Route("/Dish/Update")]
         public async Task<OkResult> UpdateDish([FromBody] UpdatedDishDto dish)
         {
-            Guid guid = Guid.Parse(dish.Id);
-            var datas = await dishRepository.UpdateDishAsync(guid, dish.DishName, dish.Description, dish.Price);
+            var datas = await dishRepository.UpdateDishAsync(dish.Id  , dish.DishName, dish.Description, dish.Price, dish.IsNew, dish.IsPorzione);
             return Ok();
         }
 
         [HttpGet]
-        [Route("/Update/GoBack")]
+        [Route("/Dish/GoBack")]
         public async Task<Dish> UpdateGoBack([FromQuery] Guid id)
         {
             Dish dish = await dishRepository.GetDishByIdAsync(id);
             return dish;
         }
 
-        // POST: HomeController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpDelete]
+        [Route("/Dish/Delete")]
+        public async Task<dynamic> Delete([FromQuery] Guid id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: HomeController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
+            await dishRepository.DeleteDishByIdAsync(id);
+            return new { Id = id };
         }
 
         // POST: HomeController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }
