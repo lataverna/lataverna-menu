@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\git\\lataverna-menu\\LaTaverna-Menu\\wwwroot\\js\\maincard-script.js",
+      "PackagePath": "staticwebassets\\js\\maincard-script.js"
+    },
+    {
       "Id": "C:\\git\\lataverna-menu\\LaTaverna-Menu\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

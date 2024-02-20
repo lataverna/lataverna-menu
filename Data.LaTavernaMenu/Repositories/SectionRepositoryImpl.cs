@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Data.LaTavernaMenu.Repositories
 {
@@ -23,19 +24,21 @@ namespace Data.LaTavernaMenu.Repositories
             this.mapper = mapper;
         }
 
-        public async Task AddDishToSectionBySectionId(string sectionName, SectionDto dish)
+        public async Task AddDishToSectionBySectionId(CreateDishDto dto)
         {
 
             DataSection section;
-            section = dbContext.Sections.First(x => x.Name == sectionName);
+            section = dbContext.Sections.Include(s => s.Dishes).First(x => x.Id == dto.sectionId);
             if (section != null && section.Dishes != null)
             {
                 var newDish = new DataDish()
                 {
                     Id = Guid.NewGuid(),
-                    Description = dish.Description,
-                    Name = dish.Name,
-                    Price = dish.Price,
+                    Description = dto.description,
+                    Name = dto.dishName,
+                    Price = dto.price,
+                    IsAPorzione = dto.weightDish,
+                    IsNew = dto.newDish,
                     SectionId = section.Id,
                 };
                 dbContext.Dishes.Add(newDish);
@@ -48,10 +51,11 @@ namespace Data.LaTavernaMenu.Repositories
                 var newDish = new DataDish()
                 {
                     Id = Guid.NewGuid(),
-                    Description = dish.Description,
-                    Name = dish.Name,
-                    Price = dish.Price,
-
+                    Description = dto.description,
+                    Name = dto.dishName,
+                    Price = dto.price,
+                    IsAPorzione = dto.weightDish,
+                    IsNew = dto.newDish,
                     SectionId = section.Id,
                 };
                 dbContext.Dishes.Add(newDish);

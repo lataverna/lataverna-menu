@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Core.LaTavernaMenu.DTOs;
 using Core.LaTavernaMenu.Interfaces.Repositories;
+using Core.LaTavernaMenu.Interfaces.Services;
 using Core.LaTavernaMenu.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.Design;
 using System.Threading.Tasks.Dataflow;
 using System.Xml.Serialization;
 
@@ -13,14 +15,14 @@ namespace LaTaverna_Menu.Controllers
     public class HomeController : Controller
     {
 
-        private readonly ISectionRepository sectionRepository;
-        private readonly IDishRepository dishRepository;
+        private readonly ISectionService sectionService;
+        private readonly IDishService dishService;
         private readonly IMapper mapper;
 
-        public HomeController(ISectionRepository sectionRepository, IDishRepository dishRepository, IMapper mapper)
+        public HomeController(ISectionService sectionService, IDishService dishService, IMapper mapper)
         {
-            this.sectionRepository = sectionRepository;
-            this.dishRepository = dishRepository;
+            this.sectionService = sectionService;
+            this.dishService = dishService;
             this.mapper = mapper;
         }
 
@@ -33,32 +35,26 @@ namespace LaTaverna_Menu.Controllers
 
         // POST: HomeController/Create
         [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        [Route("/Dish/Create")]
+        public async Task<OkResult> Create([FromBody] CreateDishDto newDish)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await sectionService.AddDishToSectionBySectionId(newDish);
+            return Ok();
         }
 
         [HttpPost]
         [Route("/Dish/Update")]
         public async Task<OkResult> UpdateDish([FromBody] UpdatedDishDto dish)
         {
-            var datas = await dishRepository.UpdateDishAsync(dish.Id  , dish.DishName, dish.Description, dish.Price, dish.IsNew, dish.IsPorzione);
+            await dishService.UpdateAsync(dish.id, dish.dishName, dish.description, dish.price, dish.isNew, dish.weight);
             return Ok();
         }
 
         [HttpGet]
-        [Route("/Dish/GoBack")]
+        [Route("/Dish/ById")]
         public async Task<Dish> UpdateGoBack([FromQuery] Guid id)
         {
-            Dish dish = await dishRepository.GetDishByIdAsync(id);
+            Dish dish = await dishService.GetDishByIdAsync(id);
             return dish;
         }
 
@@ -66,23 +62,10 @@ namespace LaTaverna_Menu.Controllers
         [Route("/Dish/Delete")]
         public async Task<dynamic> Delete([FromQuery] Guid id)
         {
-            await dishRepository.DeleteDishByIdAsync(id);
+            await dishService.DeleteAsync(id);
             return new { Id = id };
         }
 
-        // POST: HomeController/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
     }
 }
+

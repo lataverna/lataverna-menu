@@ -5,7 +5,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddServices();
 builder.Services.AddSqlServices(builder.Configuration);
 var app = builder.Build();
 

@@ -15,7 +15,7 @@ namespace Core.LaTavernaMenu.Interfaces.Repositories
         public void DeleteSectionById(Guid id);
         public void UpdateSectionById(Guid id, SectionDto sectionDto);
         public void Create(string title);
-        public Task AddDishToSectionBySectionId(string sectionName, SectionDto dish);
+        public Task AddDishToSectionBySectionId(CreateDishDto dish);
 
     }
 }

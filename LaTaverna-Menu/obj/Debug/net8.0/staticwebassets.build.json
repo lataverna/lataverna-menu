@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uViewHC1XH8Yqw2PKHIcoGBVszaLVfwRSVyyPL5O1T0=",
+  "Hash": "bD/wJqMdV4Ti66QScUB9cHx8KhMvezpgnv+O8nnEYW4=",
   "Source": "LaTaverna-Menu",
   "BasePath": "_content/LaTaverna-Menu",
   "Mode": "Default",
@@ -91,6 +91,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\git\\lataverna-menu\\LaTaverna-Menu\\wwwroot\\js\\maincard-script.js",
+      "SourceId": "LaTaverna-Menu",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\git\\lataverna-menu\\LaTaverna-Menu\\wwwroot\\",
+      "BasePath": "_content/LaTaverna-Menu",
+      "RelativePath": "js/maincard-script.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\maincard-script.js"
     },
     {
       "Identity": "C:\\git\\lataverna-menu\\LaTaverna-Menu\\wwwroot\\js\\site.js",
