@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Data.LaTavernaMenu")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d571ebcb21d00d585143f4fc9f2e69d3a7986e82")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e828908aebe916cfbe1f7c05ad164a67284cf1b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Data.LaTavernaMenu")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Data.LaTavernaMenu")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

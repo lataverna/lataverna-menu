@@ -66,6 +66,15 @@ namespace LaTaverna_Menu.Controllers
             return new { Id = id };
         }
 
+        //SECTION
+
+        [HttpPost]
+        [Route("/Section/Update")]
+        public async Task<Section> UpdateSection([FromBody] UpdatedSectionDto section)
+        {
+            var sectionUpdated = await sectionService.UpdateAsync(section.id, section.name);
+            return sectionUpdated;
+        }
     }
 }
 

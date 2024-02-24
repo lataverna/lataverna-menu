@@ -108,31 +108,40 @@ namespace Data.LaTavernaMenu.Repositories
             return mappedData;
         }
 
-        public async void UpdateSectionById(Guid id, SectionDto sectionDto)
+        public async Task<Section> UpdateAsync(Guid id, string name)
         {
-            var section = await dbContext.Sections.FindAsync(id);
-            var dishList = section.Dishes;
-            var objDish = dishList.Where(x => x.Name == sectionDto.Name).First();
-            var updatedDish = new DataDish()
-            {
-                //METODO PER RECUPERARE DISH CON IL NAME
-                Id = objDish.Id,
-                Name = sectionDto.Name,
-                Description = sectionDto.Description,
-                Price = sectionDto.Price,
-            };
-
-            dishList.Remove(objDish);
-            dishList.Add(updatedDish);
-
-            var updatedSection = new DataSection
-            {
-                Id = section.Id,
-                Name = sectionDto.Name,
-                Dishes = dishList,
-            };
-
-            dbContext.Sections.Update(updatedSection);
+            var section = await dbContext.Sections.Include(x => x.Dishes).FirstOrDefaultAsync(s => s.Id == id);
+            section.Name = name;
+            dbContext.Sections.Update(section);
+            await dbContext.SaveChangesAsync();
+            return mapper.Map<Section>(section);
         }
+
+        //public async void UpdateSectionById(Guid id, SectionDto sectionDto)
+        //{
+        //    var section = await dbContext.Sections.FindAsync(id);
+        //    var dishList = section!.Dishes;
+        //    var objDish = dishList.FirstOrDefault(x => x.Name == sectionDto.Name);
+        //    var updatedDish = new DataDish()
+        //    {
+        //        //METODO PER RECUPERARE DISH CON IL NAME
+        //        Id = objDish.Id,
+        //        Name = sectionDto.Name,
+        //        Description = sectionDto.Description,
+        //        Price = sectionDto.Price,
+        //    };
+
+        //    dishList.Remove(objDish);
+        //    dishList.Add(updatedDish);
+
+        //    var updatedSection = new DataSection
+        //    {
+        //        Id = section.Id,
+        //        Name = sectionDto.Name,
+        //        Dishes = dishList,
+        //    };
+
+        //    dbContext.Sections.Update(updatedSection);
+        //}
     }
 }

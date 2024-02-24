@@ -13,8 +13,8 @@ namespace Core.LaTavernaMenu.Interfaces.Services
         public Task<List<Section>> GetSections();
         public Task<Section> GetSectionById(Guid id);
         public void DeleteSectionById(Guid id);
-        public void UpdateSectionById(Guid id, SectionDto sectionDto);
         public void Create(string title);
         public Task AddDishToSectionBySectionId(CreateDishDto dish);
+        public Task<Section> UpdateAsync(Guid id, string name);
     }
 }

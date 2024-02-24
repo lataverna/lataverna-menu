@@ -91,7 +91,7 @@ function insertNewDish(id) {
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="weightDish" name="weightDish">
-                            <label class="form-check-label" for="weightDish">A Peso</label>
+                            <label class="form-check-label" for="weightDish">A Porzione</label>
                         </div>
                     </div>
                 </div>
@@ -199,7 +199,7 @@ function transformUpdate(obj) {
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="weightDish" name="weightDish" ${obj.weight ? 'checked' : '' }>
-                        <label class="form-check-label" for="weightDish">A Peso</label>
+                        <label class="form-check-label" for="weightDish">A porzione</label>
                     </div>
                 </div>
             </div>

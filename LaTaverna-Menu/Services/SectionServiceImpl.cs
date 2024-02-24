@@ -43,9 +43,11 @@ namespace LaTaverna_Menu.Services
             return sections;
         }
 
-        public void UpdateSectionById(Guid id, SectionDto sectionDto)
+        public async Task<Section> UpdateAsync(Guid id, string name)
         {
-            repository.UpdateSectionById(id, sectionDto);
+            var sectionUpdated = await repository.UpdateAsync(id, name);
+            return sectionUpdated;
         }
+
     }
 }
